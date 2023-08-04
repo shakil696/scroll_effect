@@ -67,7 +67,10 @@
         }
         btn.addEventListener('click', () => {
             video.classList.add('active');
-            setTimeout(() => window.location = "https://luvd.store/collections/all", 500)
+            setTimeout(() => {
+                window.location = "https://luvd.store/collections/all";
+            }, 500)
+            setTimeout(() => video.classList.remove('active'), 1000)
         })
     </script>
 </body>
