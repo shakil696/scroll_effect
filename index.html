@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .banner{
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner .video_img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: 1s ease;
+            transform: scale(1);
+            opacity: 1;
+        }
+        .video_img.active{
+            transform: scale(2);
+            opacity: 0;
+        }
+        .btn{
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            /* transform: translateX(-50%); */
+            font-size: 40px;
+            font-weight: 700;
+            color: aliceblue;
+            padding: 20px;
+            border: 2px solid red;
+            border-radius: 50px;
+            cursor: pointer;
+            animation: scroll 1s linear infinite alternate;
+        }
+        @keyframes scroll{
+            0%{
+                transform: translate(-50%, 0);
+            } 100%{
+                transform: translate(-50%, 50%);
+            }
+        }
+        .btn:hover{
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <video muted loop id="video" src="./video.mp4" class="video_img"></video>
+        <div id="btn" class="btn">&darr;</div>
+    </div>
+    <script>
+        let video = document.getElementById('video');
+        let btn = document.getElementById('btn');
+        window.onload = () => {
+            video.play();
+        }
+        btn.addEventListener('click', () => {
+            video.classList.add('active');
+            setTimeout(() => window.location = "https://luvd.store/collections/all", 500)
+        })
+    </script>
+</body>
+</html>
